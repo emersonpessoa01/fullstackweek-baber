@@ -14,7 +14,7 @@
 <p>Nessa aula vamos fazer o setup inicial do projeto, planejar sua arquitetura e criar os primeiros componentes. Você vai aprender a forma correta de iniciar e planejar um novo projeto.</p>
 <a href="https://www.youtube.com/watch?v=XRMvPCfh2U0">AULA DISPONÍVEL</a>
 
-<br><br><br><br>
+<br><br><br>
 
 <div>
 1. Primeiros passos
