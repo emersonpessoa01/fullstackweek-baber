@@ -15,7 +15,6 @@
 <a href="https://www.youtube.com/watch?v=XRMvPCfh2U0">AULA DISPONÍVEL</a>
 
 <br><br><br><br>
-<br><br>
 
 <div>
 1. Primeiros passos
