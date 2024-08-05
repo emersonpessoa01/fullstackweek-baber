@@ -10,7 +10,7 @@
   <h2>Aula 0: Setup do projeto</h2>
 </div>
 <a style="float:left" href="https://www.youtube.com/watch?v=XRMvPCfh2U0" target="_blank">
-<img src="./app/image/setup.webp" width="80%">
+<img src="./app/image/setup.webp" width="100%">
 </a>
 <p>Nessa aula vamos fazer o setup inicial do projeto, planejar sua arquitetura e criar os primeiros componentes. Você vai aprender a forma correta de iniciar e planejar um novo projeto.</p>
 <a href="https://www.youtube.com/watch?v=XRMvPCfh2U0">AULA DISPONÍVEL</a>
