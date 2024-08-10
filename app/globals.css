@@ -38,9 +38,34 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border antialiased;
+  }
+  html {
+    @apply h-full;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply h-full bg-background text-foreground;
   }
+}
+
+html {
+  overflow-x: hidden;
+  scroll-padding-top: 4rem;
+  scroll-behavior: smooth;
+}
+html::-webkit-scrollbar {
+  width: .5rem;
+  height: 0.25px;
+}
+html::-webkit-scrollbar-track {
+  /* background: transparent; */
+  background: inset 0 0 5px #a5aaad;
+}
+html::-webkit-scrollbar-thumb {
+  background: #8161ff;
+  border-radius: 5rem;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background:#7a5bf6;
+  cursor: pointer;
 }
