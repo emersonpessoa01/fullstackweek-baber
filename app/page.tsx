@@ -7,8 +7,12 @@ import Mobile from "../public/image/banner-mobile.png";
 import { Card, CardContent } from "./_components/ui/card";
 import { Badge } from "./_components/ui/badge";
 import { Avatar, AvatarImage } from "./_components/ui/avatar";
+import { db } from "./_lib/prisma";
+import BarbershopItem from "./_components/barbarshop-item";
 
-const Home = () => {
+const Home = async () => {
+  //Chamar meu bnco de dados
+  const barbershops = await db.barbershop.findMany({});
   return (
     <div>
       <Header />
@@ -31,9 +35,10 @@ const Home = () => {
             className=" w-full object-cover"
           />
         </div> */}
-        <div className="relative mt-6 h-[400px] w-full">
-          <picture>
+        <div className="relative mt-6 h-[400px] w-full overflow-hidden rounded-2xl">
+          <picture className="rounded-2xl">
             <source
+              className="transition-transform duration-1000 hover:scale-125"
               srcSet="/image/banner-desktop.png"
               media="(min-width: 768px)"
             />
@@ -41,12 +46,15 @@ const Home = () => {
               src={Mobile}
               alt="Banner"
               fill
-              className="rounded-xt h-full w-full object-cover"
+              className="rounded-xt h-full w-full object-cover transition-transform duration-700 hover:scale-110"
             />
           </picture>
         </div>
         {/* AGENDAMENTO */}
-        <Card className="mt-6">
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+          Agendamentos
+        </h2>
+        <Card>
           <CardContent className="flex flex-wrap justify-between p-0">
             {/* ESQUERDA */}
             <div className="flex flex-col gap-2 py-5 pl-5">
@@ -67,6 +75,16 @@ const Home = () => {
             </div>
           </CardContent>
         </Card>
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+          Recomendados
+        </h2>
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+          {barbershops.map((barbershop) => {
+            return (
+              <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
