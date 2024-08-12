@@ -1,4 +1,4 @@
-import { SearchIcon } from "lucide-react";
+import { FootprintsIcon, SearchIcon } from "lucide-react";
 import Header from "./_components/header";
 import { Button } from "./_components/ui/button";
 import { Input } from "./_components/ui/input";
@@ -13,10 +13,16 @@ import BarbershopItem from "./_components/barbarshop-item";
 const Home = async () => {
   //Chamar meu bnco de dados
   const barbershops = await db.barbershop.findMany({});
+  const popularBarbershops = await db.barbershop.findMany({
+    orderBy: {
+      name: "desc",
+    },
+  });
+
   return (
     <div>
       <Header />
-      <div className="px-4 pt-20">
+      <div className="px-4 py-4 pt-20">
         <h2 className="text-xl font-bold">Olá, Emerson</h2>
         <p>Quarta-feira, 07 de Agosto</p>
         {/* BUSCA */}
@@ -35,6 +41,55 @@ const Home = async () => {
             className=" w-full object-cover"
           />
         </div> */}
+        {/* BUSCA RÁPIDA */}
+
+        <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/image/cabelo.svg"
+              width={16}
+              height={16}
+              alt="Cabelo"
+            />
+            Cabelo
+          </Button>
+          <Button className="gap-2" variant="secondary">
+            <Image src="/image/barba.svg" width={16} height={16} alt="Barba" />
+            Barba
+          </Button>
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/image/acabamento.svg"
+              width={16}
+              height={16}
+              alt="Acabamento"
+            />
+            Acabamento
+          </Button>
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/image/acabamento.svg"
+              width={16}
+              height={16}
+              alt="Acabamento"
+            />
+            Acabamento
+          </Button>
+          <Button className="gap-2" variant="secondary">
+            <FootprintsIcon />
+            Pezinho
+          </Button>
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/image/sobrancelha.svg"
+              width={16}
+              height={16}
+              alt="Sobrancelha"
+            />
+            Sobrancelha
+          </Button>
+        </div>
+
         <div className="relative mt-6 h-[400px] w-full overflow-hidden rounded-2xl">
           <picture className="rounded-2xl">
             <source
@@ -75,6 +130,8 @@ const Home = async () => {
             </div>
           </CardContent>
         </Card>
+        {/* BARBEARIA RECOMENDADAS */}
+
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
           Recomendados
         </h2>
@@ -85,7 +142,29 @@ const Home = async () => {
             );
           })}
         </div>
+        {/* BARBEARIA POPULARES */}
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+          Populares
+        </h2>
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+          {popularBarbershops.map((barbershop) => {
+            return (
+              <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+            );
+          })}
+        </div>
       </div>
+      {/* FOOTER */}
+      <footer>
+        <Card>
+          <CardContent className="-x-5 py-6">
+            <p className="text-sm text-gray-400">
+              &copy; {new Date().getFullYear()} Copyright{" "}
+              <span className="font-bold">FSW Barber</span>
+            </p>
+          </CardContent>
+        </Card>
+      </footer>
     </div>
   );
 };
