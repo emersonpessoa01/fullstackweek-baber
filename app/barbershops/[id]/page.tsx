@@ -1,3 +1,4 @@
+import ServiceItem from "@/app/_components/service-item";
 import { Button } from "@/app/_components/ui/button";
 import ScrollTop from "@/app/_components/ui/scrolltop";
 import { db } from "@/app/_lib/prisma";
@@ -10,7 +11,7 @@ interface BarbershopPageProps {
     id: string;
   }; // id do barbeiro
 }
-const BarbershopPage: React.FC = async ({ params }: BarbershopPageProps) => {
+const BarbershopPage: React.FC<BarbershopPageProps> = async ({ params }) => {
   //Chamar o meu banc de dados
   const barbershop = await db.barbershop.findUnique({
     where: {
@@ -22,7 +23,7 @@ const BarbershopPage: React.FC = async ({ params }: BarbershopPageProps) => {
     },
   });
 
-  const services = barbershop?.services ?? [];
+  // const services = barbershop?.services ?? [];
   // console.log(services)
 
   // Verificar se o barbeiro existe
@@ -37,7 +38,7 @@ const BarbershopPage: React.FC = async ({ params }: BarbershopPageProps) => {
           src={barbershop?.imageUrl ?? ""}
           alt={barbershop?.name ?? ""}
           fill
-          className="object-cover transition-transform duration-500 ease-out hover:scale-110"
+          className="object-cover"
         />
         <Button
           className="absolute left-4 top-4"
@@ -45,16 +46,19 @@ const BarbershopPage: React.FC = async ({ params }: BarbershopPageProps) => {
           variant="secondary"
           asChild
         >
-          <Link href="/">
-            <ChevronLeftIcon />
+          <Link
+            className="border border-solid border-x-violet-400 border-y-violet-400 transition-transform duration-500 ease-out hover:bg-violet-600 hover:text-white"
+            href="/"
+          >
+            <ChevronLeftIcon className="text-indigo-400 hover:text-white" />
           </Link>
         </Button>
         <Button
-          className="absolute right-4 top-4"
+          className="absolute right-4 top-4 border border-solid border-x-violet-400 border-y-violet-400 transition-transform duration-700 ease-out hover:bg-violet-600 hover:text-white"
           size="icon"
           variant="secondary"
         >
-          <MenuIcon />
+          <MenuIcon className="text-indigo-400 hover:text-white" />
         </Button>
       </div>
 
@@ -73,20 +77,19 @@ const BarbershopPage: React.FC = async ({ params }: BarbershopPageProps) => {
           <p className="ml-2 text-sm text-gray-400">5.0 (+899 avaliações)</p>
         </div>
       </div>
-      {/* NSCRIÇÕES */}
-      <div className="space-y-5 border-b border-solid p-5">
+      {/* INSCRIÇÕES */}
+      <div className="space-y-2 border-b border-solid p-5">
         <h2 className="font-bold uppercase text-gray-400">Sobre nós</h2>
         <p className="text-justify text-sm">{barbershop?.description ?? ""}</p>
       </div>
       {/* SERVIÇOS */}
-      <div className="space-y-5 border-b border-solid p-5">
+      <div className="space-y-3 border-b border-solid p-5">
         <h2 className="font-bold uppercase text-gray-400">Serviços</h2>
-        {services.map((service) => (
-          <div key={service.id} className="flex items-center gap-2">
-            <StarIcon className="fill-primary text-primary" size={12} />
-            <p className="text-sm text-gray-400">{service.name}</p>
-          </div>
-        ))}
+        <div className="space-y-3">
+          {barbershop?.services.map((service) => (
+            <ServiceItem key={service.id} service={service} />
+          ))}
+        </div>
       </div>
       {/* SCROLLTOP */}
       <ScrollTop />

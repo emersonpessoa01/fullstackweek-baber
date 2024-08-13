@@ -46,7 +46,7 @@ const ScrollTop: React.FC = () => {
 const scrollTopStyles: { [key: string]: string } = {
   outline: "none",
   border: "0",
-  background: "#8161ff",
+  background: "#8161ffb9",
   width: "50px",
   height: "50px",
   borderRadius: "8px",
