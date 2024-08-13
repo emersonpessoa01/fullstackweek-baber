@@ -9,8 +9,9 @@ import { db } from "./_lib/prisma";
 import BarbershopItem from "./_components/barbarshop-item";
 import { quickSearchOptions } from "./_constants/search";
 import BookingItem from "./_components/booking-item";
+import ScrollTop from "./_components/ui/scrolltop";
 
-const Home = async () => {
+const Home: React.FC = async () => {
   //Chamar meu bnco de dados
   const barbershops = await db.barbershop.findMany({});
   const popularBarbershops = await db.barbershop.findMany({
@@ -101,6 +102,8 @@ const Home = async () => {
           })}
         </div>
       </div>
+      {/* SCROLLTOP */}
+      <ScrollTop />
       {/* FOOTER */}
       <footer>
         <Card>

@@ -1,4 +1,5 @@
 import { Button } from "@/app/_components/ui/button";
+import ScrollTop from "@/app/_components/ui/scrolltop";
 import { db } from "@/app/_lib/prisma";
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
@@ -9,14 +10,21 @@ interface BarbershopPageProps {
     id: string;
   }; // id do barbeiro
 }
-
-const BarbershopPage = async ({ params }: BarbershopPageProps) => {
+const BarbershopPage: React.FC = async ({ params }: BarbershopPageProps) => {
   //Chamar o meu banc de dados
   const barbershop = await db.barbershop.findUnique({
     where: {
       id: params.id,
     },
+    include: {
+      //faz o jioin(agregar) entre duas tabelas
+      services: true,
+    },
   });
+
+  const services = barbershop?.services ?? [];
+  // console.log(services)
+
   // Verificar se o barbeiro existe
   // if (!barbershop) {
   //   return notFound();
@@ -24,12 +32,12 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
   return (
     <div>
       {/* IMAGE */}
-      <div className="w-Fullscreen relative h-[250px]">
+      <div className="w-Fullscreen relative h-[250px] overflow-hidden">
         <Image
           src={barbershop?.imageUrl ?? ""}
           alt={barbershop?.name ?? ""}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-500 ease-out hover:scale-110"
         />
         <Button
           className="absolute left-4 top-4"
@@ -70,6 +78,18 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
         <h2 className="font-bold uppercase text-gray-400">Sobre nós</h2>
         <p className="text-justify text-sm">{barbershop?.description ?? ""}</p>
       </div>
+      {/* SERVIÇOS */}
+      <div className="space-y-5 border-b border-solid p-5">
+        <h2 className="font-bold uppercase text-gray-400">Serviços</h2>
+        {services.map((service) => (
+          <div key={service.id} className="flex items-center gap-2">
+            <StarIcon className="fill-primary text-primary" size={12} />
+            <p className="text-sm text-gray-400">{service.name}</p>
+          </div>
+        ))}
+      </div>
+      {/* SCROLLTOP */}
+      <ScrollTop />
     </div>
   );
 };
