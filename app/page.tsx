@@ -7,7 +7,7 @@ import Mobile from "../public/image/banner-mobile.png";
 import { Card, CardContent } from "./_components/ui/card";
 import { db } from "./_lib/prisma";
 import BarbershopItem from "./_components/barbarshop-item";
-import { quickSearchOptions } from "./_constatnts/search";
+import { quickSearchOptions } from "./_constants/search";
 import BookingItem from "./_components/booking-item";
 
 const Home = async () => {
@@ -82,7 +82,7 @@ const Home = async () => {
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
           Recomendados
         </h2>
-        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+        <div className="flex gap-4 overflow-auto py-6 [&::-webkit-scrollbar]:hidden">
           {barbershops.map((barbershop) => {
             return (
               <BarbershopItem key={barbershop.id} barbershop={barbershop} />
