@@ -4,7 +4,6 @@ import { Button } from "./_components/ui/button";
 import { Input } from "./_components/ui/input";
 import Image from "next/image";
 import Mobile from "../public/image/banner-mobile.png";
-import { Card, CardContent } from "./_components/ui/card";
 import { db } from "./_lib/prisma";
 import BarbershopItem from "./_components/barbarshop-item";
 import { quickSearchOptions } from "./_constants/search";
@@ -16,7 +15,7 @@ const Home: React.FC = async () => {
   const barbershops = await db.barbershop.findMany({});
   const popularBarbershops = await db.barbershop.findMany({
     orderBy: {
-      name: "desc",
+      name: "asc",
     },
   });
 
@@ -105,16 +104,6 @@ const Home: React.FC = async () => {
       {/* SCROLLTOP */}
       <ScrollTop />
       {/* FOOTER */}
-      <footer>
-        <Card>
-          <CardContent className="-x-5 py-6">
-            <p className="text-sm text-gray-400">
-              &copy; {new Date().getFullYear()} Copyright{" "}
-              <span className="font-bold">FSW Barber</span>
-            </p>
-          </CardContent>
-        </Card>
-      </footer>
     </div>
   );
 };

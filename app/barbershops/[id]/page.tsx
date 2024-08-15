@@ -1,5 +1,7 @@
+import PhoneItem from "@/app/_components/phone-item";
 import ServiceItem from "@/app/_components/service-item";
 import { Button } from "@/app/_components/ui/button";
+import { Card, CardContent } from "@/app/_components/ui/card";
 import ScrollTop from "@/app/_components/ui/scrolltop";
 import { db } from "@/app/_lib/prisma";
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
@@ -39,6 +41,7 @@ const BarbershopPage: React.FC<BarbershopPageProps> = async ({ params }) => {
           alt={barbershop?.name ?? ""}
           fill
           className="object-cover"
+          sizes="(max-width:768px)100vw,50vw"
         />
         <Button
           className="absolute left-4 top-4"
@@ -62,7 +65,7 @@ const BarbershopPage: React.FC<BarbershopPageProps> = async ({ params }) => {
         </Button>
       </div>
 
-      {/* TEXTO */}
+      {/* TITULO */}
       <div className="border-b border-solid p-5">
         <h1 className="mb-3 text-xl font-bold">{barbershop?.name ?? ""}</h1>
         <div className="mb-2 flex items-center">
@@ -77,7 +80,7 @@ const BarbershopPage: React.FC<BarbershopPageProps> = async ({ params }) => {
           <p className="ml-2 text-sm text-gray-400">5.0 (+899 avaliações)</p>
         </div>
       </div>
-      {/* INSCRIÇÕES */}
+      {/* DESCRIÇÃO */}
       <div className="space-y-2 border-b border-solid p-5">
         <h2 className="font-bold uppercase text-gray-400">Sobre nós</h2>
         <p className="text-justify text-sm">{barbershop?.description ?? ""}</p>
@@ -91,6 +94,18 @@ const BarbershopPage: React.FC<BarbershopPageProps> = async ({ params }) => {
           ))}
         </div>
       </div>
+      {/* CONTATO */}
+
+      <div className="border-b border-solid p-5">
+        <Card>
+          <CardContent className="space-y-3 border-b border-solid p-5">
+            {barbershop?.phones.map((phone) => {
+              return <PhoneItem key={phone} phone={phone} />;
+            })}
+          </CardContent>
+        </Card>
+      </div>
+
       {/* SCROLLTOP */}
       <ScrollTop />
     </div>
