@@ -3,12 +3,13 @@ import Header from "./_components/header";
 import { Button } from "./_components/ui/button";
 import { Input } from "./_components/ui/input";
 import Image from "next/image";
-import Mobile from "../public/image/banner-mobile.png";
+// import Mobile from "../public/image/banner-mobile.png";
 import { db } from "./_lib/prisma";
 import BarbershopItem from "./_components/barbarshop-item";
 import { quickSearchOptions } from "./_constants/search";
 import BookingItem from "./_components/booking-item";
 import ScrollTop from "./_components/ui/scrolltop";
+import SliderImage from "./_components/slider-image";
 
 const Home: React.FC = async () => {
   //Chamar meu bnco de dados
@@ -59,21 +60,7 @@ const Home: React.FC = async () => {
           })}
         </div>
 
-        <div className="relative mt-6 h-[400px] w-full overflow-hidden rounded-2xl">
-          <picture className="rounded-2xl">
-            <source
-              className="transition-transform duration-1000 hover:scale-125"
-              srcSet="/image/banner-desktop.png"
-              media="(min-width: 768px)"
-            />
-            <Image
-              src={Mobile}
-              alt="Banner"
-              fill
-              className="rounded-xt h-full w-full object-cover transition-transform duration-700 hover:scale-110"
-            />
-          </picture>
-        </div>
+        <SliderImage />
         {/* AGENDAMENTO */}
         <BookingItem />
 

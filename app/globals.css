@@ -47,7 +47,7 @@
     @apply h-full bg-background text-foreground;
   }
 }
-
+/* Otimização da barra de rolagem */
 html {
   overflow-x: hidden;
   scroll-padding-top: 4rem;
@@ -69,3 +69,53 @@ html::-webkit-scrollbar-thumb:hover {
   background:#7a5bf6;
   cursor: pointer;
 }
+
+/* CSS personalizado para botões de navegação */
+.slick-prev {
+  display: none !important;
+  left: 0px !important;
+}
+.slick-next {
+  display: none !important;
+  right: 0px !important;
+}
+.slick-prev,
+.slick-next {
+  width: 40px !important;
+  height: 40px!important;
+  z-index: 2 !important; /* Garantir que os botões estejam acima de outros elementos */
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 30px !important;
+}
+.slider-container:hover .slick-slider .slick-prev,.slider-container:hover .slick-slider .slick-next{
+  display: block !important;
+}
+/* Botão indicadores de navegação */
+/* Estilização dos dots (pontos de navegação) */
+.slick-dots {
+  bottom: 20px !important; /* Ajuste a posição vertical */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position:absolute !important;
+  z-index: 3 !important;
+}
+
+.slick-dots li {
+  margin: 0 5px !important; /* Espaçamento entre os dots */
+}
+
+.slick-dots li button:before {
+  font-size: clamp(8px,0.92vw,14px) !important; /* Tamanho dos dots */
+  color: #f2f2f2 !important; /* Cor dos dots */
+  opacity: 0.5 !important; /* Opacidade dos dots inativos */
+}
+
+.slick-dots li.slick-active button:before {
+  color: #fff !important; /* Cor dos dots ativos */
+  opacity: 1 !important; /* Opacidade dos dots ativos */
+}
+
