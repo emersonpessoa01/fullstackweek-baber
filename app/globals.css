@@ -119,3 +119,8 @@ html::-webkit-scrollbar-thumb:hover {
   opacity: 1 !important; /* Opacidade dos dots ativos */
 }
 
+/* Estilização do Tobble */
+.data-\[state\=open\]\:slide-in-from-right[data-state="open"] {
+  position: absolute;
+  z-index: 2000;
+}
