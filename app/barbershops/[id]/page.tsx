@@ -1,10 +1,11 @@
 import PhoneItem from "@/app/_components/phone-item";
 import ServiceItem from "@/app/_components/service-item";
+import SidebarSheet from "@/app/_components/sidebar-sheet";
 import { Button } from "@/app/_components/ui/button";
 import { Card, CardContent } from "@/app/_components/ui/card";
 import ScrollTop from "@/app/_components/ui/scrolltop";
 import { db } from "@/app/_lib/prisma";
-import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
+import { ChevronLeftIcon, MapPinIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -56,13 +57,9 @@ const BarbershopPage: React.FC<BarbershopPageProps> = async ({ params }) => {
             <ChevronLeftIcon className="text-indigo-400 hover:text-white" />
           </Link>
         </Button>
-        <Button
-          className="absolute right-4 top-4 border border-solid border-x-violet-400 border-y-violet-400 transition-transform duration-700 ease-out hover:bg-violet-600 hover:text-white"
-          size="icon"
-          variant="secondary"
-        >
-          <MenuIcon className="text-indigo-400 hover:text-white" />
-        </Button>
+        {/* Sheet início */}
+        <SidebarSheet />
+        {/* Sheet fim */}
       </div>
 
       {/* TITULO */}
