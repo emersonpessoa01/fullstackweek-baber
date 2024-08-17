@@ -1,6 +1,12 @@
 // components/MenuSheet.tsx
 import React from "react";
-import { MenuIcon, HomeIcon, CalendarIcon, LogOutIcon } from "lucide-react";
+import {
+  MenuIcon,
+  HomeIcon,
+  CalendarIcon,
+  LogOutIcon,
+  LogInIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,8 +18,15 @@ import {
   SheetTrigger,
 } from "./ui/sheet";
 import { Button } from "./ui/button";
-import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 import { quickSearchOptions } from "../_constants/search";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 
 // Simulação das opções de pesquisa rápida
 // const quickSearchOptions = [
@@ -40,8 +53,34 @@ const SidebarSheet: React.FC = () => {
         </SheetHeader>
 
         {/* AVATAR */}
-        <div className="flex items-center gap-3 border-b border-solid py-5">
-          <Avatar>
+        <div className="flex items-center justify-between gap-3 border-b border-solid py-5">
+          <p className="font-bold">Faça o seu login</p>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button size="icon">
+                <LogInIcon />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="absolute z-500 w-[90%]">
+              <DialogHeader>
+                <DialogTitle>Faça o seu login na plataforma</DialogTitle>
+                <DialogDescription>
+                  Conecte-se usando uma conta do google.
+                </DialogDescription>
+              </DialogHeader>
+              <Button variant="outline" className="gap-2font-bold">
+                <Image
+                  src="/image/google.svg"
+                  alt="Fazer um login o Google"
+                  width={18}
+                  height={18}
+                />
+                Google
+              </Button>
+            </DialogContent>
+          </Dialog>
+
+          {/* <Avatar>
             <AvatarImage
               src="/image/emersonpessoa-removebg8.png"
               className="h-10 w-10"
@@ -50,7 +89,7 @@ const SidebarSheet: React.FC = () => {
           <div>
             <p className="font-bold">Emerson Pessoa</p>
             <p className="text-sm">emersonpessoa@fullstack.io</p>
-          </div>
+          </div> */}
         </div>
 
         {/* Links do Menu */}
