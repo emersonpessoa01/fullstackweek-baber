@@ -27,10 +27,12 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <AuthProvider>
-          <main>{children}</main>
-          <Toaster />
-          <Footer />
+          <main className="flex h-full flex-col">
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </main>
         </AuthProvider>
+        <Toaster />
       </body>
     </html>
   );
