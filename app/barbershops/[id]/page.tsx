@@ -21,7 +21,7 @@ const BarbershopPage: React.FC<BarbershopPageProps> = async ({ params }) => {
       id: params.id,
     },
     include: {
-      //faz o jioin(agregar) entre duas tabelas
+      //faz o join(agregar) entre duas tabelas
       services: true,
     },
   });

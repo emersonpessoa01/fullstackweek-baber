@@ -1,7 +1,5 @@
-import { SearchIcon } from "lucide-react";
 import Header from "./_components/header";
 import { Button } from "./_components/ui/button";
-import { Input } from "./_components/ui/input";
 import Image from "next/image";
 // import Mobile from "../public/image/banner-mobile.png";
 import { db } from "./_lib/prisma";
@@ -10,6 +8,7 @@ import { quickSearchOptions } from "./_constants/search";
 import BookingItem from "./_components/booking-item";
 import ScrollTop from "./_components/ui/scrolltop";
 import SliderImage from "./_components/slider-image";
+import Search from "./_components/search";
 
 const Home: React.FC = async () => {
   //Chamar meu bnco de dados
@@ -27,11 +26,8 @@ const Home: React.FC = async () => {
         <h2 className="text-xl font-bold">Olá, Emerson</h2>
         <p>Quarta-feira, 07 de Agosto</p>
         {/* BUSCA */}
-        <div className="mt-6 flex items-center gap-2">
-          <Input placeholder="Faça sua busca..." />
-          <Button>
-            <SearchIcon />
-          </Button>
+        <div className="mt-6">
+          <Search />
         </div>
         {/* IMAGEM */}
         {/* <div className="relative mt-6 h-[400px]">
