@@ -54,7 +54,7 @@ html {
   scroll-behavior: smooth;
 }
 html::-webkit-scrollbar {
-  width: .5rem;
+  width: 0.5rem;
   height: 0.25px;
 }
 html::-webkit-scrollbar-track {
@@ -66,7 +66,24 @@ html::-webkit-scrollbar-thumb {
   border-radius: 5rem;
 }
 html::-webkit-scrollbar-thumb:hover {
-  background:#7a5bf6;
+  background: #7a5bf6;
+  cursor: pointer;
+}
+
+/* CSS personalizado para dialogos */
+[role="dialog"]::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.25px;
+}
+[role="dialog"]::-webkit-scrollbar-track {
+  background: inset 0 0 5px #a5aaad;
+}
+[role="dialog"]::-webkit-scrollbar-thumb {
+  background: #8161ff;
+  border-radius: 5rem;
+}
+[role="dialog"]::-webkit-scrollbar-thumb:hover {
+  background: #7a5bf6;
   cursor: pointer;
 }
 
@@ -82,7 +99,7 @@ html::-webkit-scrollbar-thumb:hover {
 .slick-prev,
 .slick-next {
   width: 40px !important;
-  height: 40px!important;
+  height: 40px !important;
   z-index: 2 !important; /* Garantir que os botões estejam acima de outros elementos */
 }
 
@@ -90,7 +107,8 @@ html::-webkit-scrollbar-thumb:hover {
 .slick-next:before {
   font-size: 30px !important;
 }
-.slider-container:hover .slick-slider .slick-prev,.slider-container:hover .slick-slider .slick-next{
+.slider-container:hover .slick-slider .slick-prev,
+.slider-container:hover .slick-slider .slick-next {
   display: block !important;
 }
 /* Botão indicadores de navegação */
@@ -100,7 +118,7 @@ html::-webkit-scrollbar-thumb:hover {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  position:absolute !important;
+  position: absolute !important;
   z-index: 3 !important;
 }
 
@@ -109,7 +127,7 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 .slick-dots li button:before {
-  font-size: clamp(8px,0.92vw,14px) !important; /* Tamanho dos dots */
+  font-size: clamp(8px, 0.92vw, 14px) !important; /* Tamanho dos dots */
   color: #f2f2f2 !important; /* Cor dos dots */
   opacity: 0.5 !important; /* Opacidade dos dots inativos */
 }

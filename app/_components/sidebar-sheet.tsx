@@ -134,14 +134,16 @@ const SidebarSheet: React.FC = () => {
         <div className="flex flex-col gap-4 border-b border-solid py-5">
           {quickSearchOptions.map((option) => (
             <SheetClose asChild key={option.title}>
-              <Button className="justify-start gap-2" variant={"ghost"}>
-                <Image
-                  src={option.imageUrl}
-                  width={18}
-                  height={18}
-                  alt={option.title}
-                />
-                {option.title}
+              <Button className="justify-start gap-2" variant={"ghost"} asChild>
+                <Link href={`/barbershops?service=${option.title}`}>
+                  <Image
+                    src={option.imageUrl}
+                    width={18}
+                    height={18}
+                    alt={option.title}
+                  />
+                  {option.title}
+                </Link>
               </Button>
             </SheetClose>
           ))}
